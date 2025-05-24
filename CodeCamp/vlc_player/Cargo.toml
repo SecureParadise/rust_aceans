@@ -1,0 +1,27 @@
+[package]
+name = "vlc_player"
+version = "0.1.0"
+edition = "2024"
+[dependencies]
+# GUI Framework (egui for simplicity)
+eframe = "0.31.1"  # Desktop app framework for egui
+egui = "0.31.1"     # Immediate-mode GUI
+
+# Audio/Video Decoding (Pure Rust)
+symphonia = { version = "0.5", features = ["mp3", "aac", "flac", "alac", "wav", "ogg"] } # Supports many formats
+symphonia-bundle-mp3 = "0.5"   # Optional: MP3 decoder
+symphonia-bundle-flac = "0.5"  # Optional: FLAC decoder
+
+# Audio Playback (Pure Rust)
+cpal = "0.15"     # Cross-platform audio I/O
+rodio = "0.20.1"    # High-level audio playback (optional, simplifies cpal usage)
+
+# File Picking (Pure Rust)
+rfd = "0.15.3"      # Native file dialogs
+
+# Async Runtime (for networking, if needed)
+tokio = { version = "1.0", features = ["full"] } # Optional: For streaming
+
+# Video Rendering (Optional, if GPU acceleration is needed)
+wgpu = "25.0.0"     # Pure Rust GPU rendering (Vulkan/Metal/DX12/WebGPU)
+bytemuck = "1.0"  # Required for wgpu
